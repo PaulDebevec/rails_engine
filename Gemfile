@@ -29,7 +29,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'rack-cors'
 gem 'faraday'
 gem 'figaro'
-
+gem 'json'
+gem 'activerecord-import'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -45,6 +46,10 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
 end
 
 group :development do
