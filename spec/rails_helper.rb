@@ -22,6 +22,10 @@ Shoulda::Matchers.configure do |config|
   with.library :rails
   end
 end
+
+SimpleCov.start do
+  add_filter 'spec/rails_helper.rb'
+end
 # The following line is provided for convenience purposes. It has the downside
 # of increasing the boot-up time by auto-requiring all files in the support
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
