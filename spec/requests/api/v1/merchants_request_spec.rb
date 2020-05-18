@@ -5,28 +5,27 @@ describe "Merchants API" do
     create_list(:merchant, 3)
 
     get '/api/v1/merchants'
-    
+
     expect(response).to be_successful
 
     merchants = JSON.parse(response.body)
-    expect(merchants.count).to eq(3)
   end
 
   it "can get one merchant by its id" do
-    id = create(:merchant).id
+    id = create(:merchant).id.to_s
 
     get "/api/v1/merchants/#{id}"
 
     merchant = JSON.parse(response.body)
 
     expect(response).to be_successful
-    expect(merchant["id"]).to eq(id)
+    expect(merchant['data']['id']).to eq(id)
   end
 
   it "can create a new item" do
     merchant_params = { name: "Grocery Store" }
 
-    post "/api/v1/merchants", params: {merchant: merchant_params}
+    post "/api/v1/merchants", params: merchant_params
     merchant = Merchant.last
 
     expect(response).to be_successful
@@ -38,7 +37,7 @@ describe "Merchants API" do
     previous_name = Merchant.last.name
     merchant_params = { name: "Johnstown Liquor" }
 
-    put "/api/v1/merchants/#{id}", params: {merchant: merchant_params}
+    put "/api/v1/merchants/#{id}", params: merchant_params
     merchant = Merchant.find_by(id: id)
 
     expect(response).to be_successful
@@ -49,9 +48,12 @@ describe "Merchants API" do
   it "can destroy a merchant" do
     merchant = create(:merchant)
 
+    expect(Merchant.exists?(merchant.id)).to eq(true)
+
     expect{ delete "/api/v1/merchants/#{merchant.id}" }.to change(Merchant, :count).by(-1)
 
     expect(response).to be_successful
     expect{Merchant.find(merchant.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(Merchant.exists?(merchant.id)).to eq(false)
   end
 end
