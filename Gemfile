@@ -26,16 +26,19 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'rack-cors'
-gem 'faraday'
-gem 'figaro'
-gem 'json'
-gem 'activerecord-import'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'rack-cors'
+gem 'faraday'
+gem 'figaro'
+gem 'json'
+gem 'activerecord-import'
+gem 'fast_jsonapi'
+gem 'faker'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
