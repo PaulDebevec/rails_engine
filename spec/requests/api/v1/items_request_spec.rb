@@ -23,13 +23,21 @@ describe "Items API" do
   end
 
   it "can create a new item" do
-    item_params = { name: "Cup o' Coffee ", description: "It's good", unit_price: "3.99" }
+    merchant = create(:merchant)
+    item_params = { name: "Cup o' Coffee", description: "It's good", unit_price: 3.99, merchant_id: merchant.id }
+    item_1 = merchant.items.create!(name: "Sobe", description: "Tasty", unit_price: 2.98)
+    item_2 = merchant.items.create!(name: "Tommy Knockers", description: "Root Beer", unit_price: 1.99)
 
-    post "/api/v1/items", params: item_params
-    item = Item.last
-
+    post "/api/v1/items", params: {item: item_params}
     expect(response).to be_successful
-    expect(item.name).to eq(item_params[:name])
+
+    new_item = Item.last
+
+    expect(new_item.name).to eq(item_params[:name])
+
+    item = JSON.parse(response.body)['data']
+    expect(item['attributes']['name']).to eq(item_params[:name])
+    expect(item['attributes']['description']).to eq(item_params[:description])
   end
 
   it "can update an existing item" do
@@ -37,7 +45,7 @@ describe "Items API" do
     previous_name = Item.last.name
     item_params = { name: "Johnstown Liquor" }
 
-    put "/api/v1/items/#{id}", params: item_params
+    patch "/api/v1/items/#{id}", params: {item: item_params}
     item = Item.find_by(id: id)
 
     expect(response).to be_successful
