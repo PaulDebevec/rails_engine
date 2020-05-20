@@ -1,11 +1,11 @@
-class Api::V1::ItemsController < ApplicationController
+class Api::V1::Items::ItemsController < ApplicationController
   def index
     items = Item.all
     render json: serialized_items(items).serialized_json
   end
 
   def show
-    item = Item.find(params[:id])
+    item = Item.find(params[:item_id])
     render json: serialized_items(item).serialized_json
   end
 
@@ -15,12 +15,12 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
-    updated_item = Item.update(params[:id], item_params)
+    updated_item = Item.update(params[:item_id], item_params)
     render json: serialized_items(updated_item).serialized_json
   end
 
   def destroy
-    destroy_item = Item.destroy(params[:id])
+    destroy_item = Item.destroy(params[:item_id])
     render json: serialized_items(destroy_item)
   end
 
