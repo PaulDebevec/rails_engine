@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :transaction do
-    credit_card_number { 1 }
-    credit_card_expiration_date { 1 }
-    result { "MyString" }
+    credit_card_number { Faker::Bank.account_number(digits: 16) }
+    credit_card_expiration_date { Faker::Date.in_date_period }
+    result { "Success" }
   end
 end
