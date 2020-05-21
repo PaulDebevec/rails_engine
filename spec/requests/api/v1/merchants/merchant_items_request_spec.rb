@@ -13,5 +13,14 @@ RSpec.describe "Merchant Items API", type: :request do
 
     merchant_items = JSON.parse(response.body)
     expect(merchant_items["data"].count).to eq(3)
+    expect(merchant_items["data"][0]["id"].to_i).to eq(item_1.id)
+    expect(merchant_items["data"][0]["type"]).to eq("item")
+    expect(merchant_items["data"][0]["attributes"]["name"]).to eq(item_1.name)
+    expect(merchant_items["data"][1]["id"].to_i).to eq(item_2.id)
+    expect(merchant_items["data"][1]["type"]).to eq("item")
+    expect(merchant_items["data"][1]["attributes"]["name"]).to eq(item_2.name)
+    expect(merchant_items["data"][2]["id"].to_i).to eq(item_3.id)
+    expect(merchant_items["data"][2]["type"]).to eq("item")
+    expect(merchant_items["data"][2]["attributes"]["name"]).to eq(item_3.name)
   end
 end
