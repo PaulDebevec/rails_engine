@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       namespace :merchants do
         get '/', to: 'merchants#index'
         post '/', to: 'merchants#create'
+        get '/find', to: 'find#show'
         get '/:merchant_id', to: 'merchants#show'
         put '/:merchant_id', to: 'merchants#update'
         delete '/:merchant_id', to: 'merchants#destroy'
