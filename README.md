@@ -38,11 +38,18 @@ Follow these steps in your command line terminal to set up Rails Engine on your 
 ```
   open coverage/index.html
 ```
- - Start the Rails server:
+ - Start the Rails server: 
 ```
   rails s
 ```
 
+Running `rails s`, by default will start the server on port 3000. 
+
 ### Schema Design
 
 ![](app/assets/images/rails_engine.png)
+
+
+### Endpoints
+
+`http://localhost:3000/`
