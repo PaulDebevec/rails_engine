@@ -51,5 +51,6 @@ Running `rails s`, by default will start the server on port 3000.
 
 
 ### Endpoints
+***Coming Soon***
 
 `http://localhost:3000/`
