@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Merchant Items API" do
+RSpec.describe "Merchant Items API", type: :request do
   it "sends a list of items belonging to that merchant" do
     merchant = create(:merchant)
     item_1 = merchant.items.create!(name: "Sobe", description: "Tasty", unit_price: 2.98)

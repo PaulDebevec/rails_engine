@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Items Merchant API" do
+RSpec.describe "Items Merchant API", type: :request do
   it "sends the merchant who the item belongs to" do
     merchant = create(:merchant)
     item_1 = merchant.items.create!(name: "Sobe", description: "Tasty", unit_price: 2.98)
@@ -12,6 +12,10 @@ describe "Items Merchant API" do
     expect(response).to be_successful
 
     merchant_items = JSON.parse(response.body)
-    # expect(merchant_items["data"].count).to eq(3)
+
+    expect(merchant_items["data"].count).to eq(3)
+    expect(merchant_items["data"]["id"].to_i).to eq(merchant.id)
+    expect(merchant_items["data"]["type"]).to eq("merchant")
+    expect(merchant_items["data"]["attributes"]["name"]).to eq(merchant.name)
   end
 end
