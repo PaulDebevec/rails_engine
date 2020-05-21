@@ -42,3 +42,7 @@ Follow these steps in your command line terminal to set up Rails Engine on your 
 ```
   rails s
 ```
+
+### Schema Design
+
+![](app/assets/images/rails_engine.png)
