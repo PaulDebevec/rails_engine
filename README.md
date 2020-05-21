@@ -22,7 +22,7 @@ Follow these steps in your command line terminal to set up Rails Engine on your 
 ```
   bundle
 ```
- - Create  and migrate the databasethe database:
+ - Create and migrate the database:
 ```
   rails db:{create,migrate,seed}
 ```
