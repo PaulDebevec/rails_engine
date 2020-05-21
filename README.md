@@ -4,7 +4,7 @@ Rails Engine is an API developed for the Back-End Engineering program at Turing 
 
 ## LocalHost Deployment
 
-Rails Engine uses Ruby 2.5.3 and Rails 6.0.2.1. See the included Gemfile for other gem and library dependencies.
+Rails Engine uses Ruby 2.5.3 and Rails 5.2.4.2 See the included Gemfile for other gem and library dependencies.
 
 Follow these steps in your command line terminal to set up Rails Engine on your computer:
 
